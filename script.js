@@ -31,10 +31,9 @@ const pokazKomunikat = (tresc, rodzaj) => {
 
 formularz.addEventListener("submit", function (event) {
    event.preventDefault();
-   const imie = document.querySelector("#imie").value.trim();
-   const email = document.querySelector("#email").value.trim();
-   const temat = document.querySelector("#temat").value;
-   const tresc = document.querySelector("#tresc").value.trim();
+   const dane = Object.fromEntries(new FormData(formularz));
+   const { imie, email, temat } = dane;
+
    if (imie === "") {
       pokazKomunikat("Podaj imię.", "blad");
       return;
@@ -48,7 +47,7 @@ formularz.addEventListener("submit", function (event) {
       return;
    }
    pokazKomunikat(
-      "Dziękuję, " + imie + ". Wiadomość na temat „" + temat + "została przyjęta.","sukces"
+      `Dziękuję, ${imie}. Wiadomość na temat „${temat}” została przyjęta., sukces`
    );
    console.log("Dane z formularza:", {
    imie: imie,
