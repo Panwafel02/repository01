@@ -1,13 +1,13 @@
 const umiejetnosci = [
-   "HTML",
-   "CSS",
-   "JavaScript",
-   "SQL",
-   "Git",
-   "Praca w zespole",
-   "C#",
-   "C++",
-   "Python"
+  { nazwa: "HTML", poziom: 3, kategoria: "frontend" },
+  { nazwa: "CSS", poziom: 3, kategoria: "frontend" },
+  { nazwa: "JavaScript", poziom: 3, kategoria: "frontend" },
+  { nazwa: "SQL", poziom: 2, kategoria: "backend" },
+  { nazwa: "Git", poziom: 3, kategoria: "narzedzia" },
+  { nazwa: "Praca w zespole", poziom: 3, kategoria: "miekkie" },
+  { nazwa: "C#", poziom: 2, kategoria: "backend" },
+  { nazwa: "C++", poziom: 2, kategoria: "backend" },
+  { nazwa: "Python", poziom: 3, kategoria: "backend" }
 ];
 
 const pokazUmiejetnosci = (lista) => {
