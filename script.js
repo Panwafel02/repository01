@@ -10,7 +10,7 @@ const umiejetnosci = [
  "Python"
 ];
 
-function pokazUmiejetnosci(lista) {
+const pokazUmiejetnosci = (lista) => {
  const kontener = document.querySelector("#lista-umiejetnosci");
  for (const nazwa of lista) {
  const element = document.createElement("li");
@@ -23,7 +23,7 @@ pokazUmiejetnosci(umiejetnosci);
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");
 
-function pokazKomunikat(tresc, rodzaj) {
+const pokazKomunikat = (tresc, rodzaj) => {
  komunikat.textContent = tresc;
  komunikat.classList.remove("blad", "sukces");
  komunikat.classList.add(rodzaj);
