@@ -45,7 +45,6 @@ nav a:hover {
 #przelacznik-motywu {
  margin-left: auto;
 }
-
 section {
  padding: 28px 0;
  border-bottom: 1px solid #eeeeee;
@@ -54,7 +53,6 @@ h2 {
  margin-top: 0;
  font-size: 24px;
 }
-
 #lista-umiejetnosci {
  display: flex;
  flex-wrap: wrap;
@@ -62,14 +60,21 @@ h2 {
  list-style: none;
  padding: 0;
 }
-
 #lista-umiejetnosci li {
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+ align-items: flex-start;
  background-color: #eef3fb;
  border: 1px solid #cfdcf1;
  border-radius: 14px;
  padding: 6px 14px;
 }
-
+#lista-umiejetnosci .poziom {
+ font-size: 12px;
+ letter-spacing: 2px;
+ color: #0b5ed7;
+}
 footer {
  padding: 20px 0 40px 0;
  color: gray;
@@ -121,12 +126,10 @@ button {
 button:hover {
  background-color: #0a4fb4;
 }
-
 body.ciemny {
  background-color: #1c1f24;
  color: #e8e8e8;
 }
-
 body.ciemny .podtytul,
 body.ciemny footer {
  color: #a0a0a0;
