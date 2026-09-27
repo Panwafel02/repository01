@@ -53,6 +53,31 @@ h2 {
  margin-top: 0;
  font-size: 24px;
 }
+#filtry {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ margin-bottom: 14px;
+}
+#filtry button {
+ background-color: #ffffff;
+ color: #0b5ed7;
+ padding: 5px 12px;
+ font-size: 14px;
+ align-self: auto;
+}
+#filtry button:hover {
+ background-color: #eef3fb;
+}
+#filtry button.aktywny {
+ background-color: #0b5ed7;
+ color: #ffffff;
+}
+#podsumowanie {
+ margin: 0 0 12px 0;
+ color: #555555;
+ font-size: 14px;
+}
 #lista-umiejetnosci {
  display: flex;
  flex-wrap: wrap;
@@ -126,11 +151,23 @@ button {
 button:hover {
  background-color: #0a4fb4;
 }
+#komunikat {
+ min-height: 26px;
+ margin-top: 14px;
+ font-weight: bold;
+}
+#komunikat.blad {
+ color: #b02a2a;
+}
+#komunikat.sukces {
+ color: #198754;
+}
 body.ciemny {
  background-color: #1c1f24;
  color: #e8e8e8;
 }
 body.ciemny .podtytul,
+body.ciemny #podsumowanie,
 body.ciemny footer {
  color: #a0a0a0;
 }
@@ -146,6 +183,15 @@ body.ciemny nav a {
 body.ciemny #lista-umiejetnosci li {
  background-color: #262b33;
  border-color: #3a4150;
+}
+body.ciemny #filtry button {
+ background-color: #262b33;
+ color: #7fb3ff;
+ border-color: #4b72a8;
+}
+body.ciemny #filtry button.aktywny {
+ background-color: #0b5ed7;
+ color: #ffffff;
 }
 body.ciemny input,
 body.ciemny select,

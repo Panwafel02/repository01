@@ -20,8 +20,51 @@ const budujListe = (lista) =>
         `)
         .join("");
 
+const filtrujPoKategorii = (lista, kategoria) =>
+    kategoria === "wszystkie"
+        ? [...lista]
+        : lista.filter((umiejetnosc) => umiejetnosc.kategoria === kategoria);
+
+const sredniPoziom = (lista) => {
+    if (lista.length === 0) {
+        return 0;
+    }
+
+    const suma = lista.reduce((razem, { poziom }) => razem + poziom, 0);
+    return Math.round((suma / lista.length) * 10) / 10;
+};
+
+const podsumowanie = (lista) =>
+    lista.length === 0
+        ? "Brak umiejętności w tej kategorii."
+        : `Umiejętności: ${lista.length} · średni poziom: ${sredniPoziom(lista)}`;
+
 const listaEl = document.querySelector("#lista-umiejetnosci");
-listaEl.innerHTML = budujListe(umiejetnosci);
+const podsumowanieEl = document.querySelector("#podsumowanie");
+const filtryEl = document.querySelector("#filtry");
+
+const pokazUmiejetnosci = (kategoria = "wszystkie") => {
+    const wybrane = filtrujPoKategorii(umiejetnosci, kategoria);
+    listaEl.innerHTML = budujListe(wybrane);
+    podsumowanieEl.textContent = podsumowanie(wybrane);
+};
+
+filtryEl.addEventListener("click", (event) => {
+    const przyciskFiltra = event.target.closest("button");
+
+    if (!przyciskFiltra) {
+        return;
+    }
+
+    filtryEl
+        .querySelectorAll("button")
+        .forEach((element) => element.classList.remove("aktywny"));
+
+    przyciskFiltra.classList.add("aktywny");
+    pokazUmiejetnosci(przyciskFiltra.dataset.kategoria);
+});
+
+pokazUmiejetnosci();
 
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");
@@ -66,8 +109,5 @@ const przycisk = document.querySelector("#przelacznik-motywu");
 
 przycisk.addEventListener("click", () => {
     const jestCiemny = document.body.classList.toggle("ciemny");
-
-    przycisk.textContent = jestCiemny
-        ? "Jasny motyw"
-        : "Ciemny motyw";
+    przycisk.textContent = jestCiemny ? "Jasny motyw" : "Ciemny motyw";
 });
