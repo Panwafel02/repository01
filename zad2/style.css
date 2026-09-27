@@ -100,6 +100,34 @@ h2 {
  letter-spacing: 2px;
  color: #0b5ed7;
 }
+.ladowanie {
+ color: #777777;
+ font-style: italic;
+}
+#inspiracje .blad {
+ color: #b02a2a;
+ font-weight: bold;
+}
+.osoby {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 12px;
+ list-style: none;
+ padding: 0;
+}
+.osoby li {
+ display: flex;
+ flex: 1 1 180px;
+ flex-direction: column;
+ min-width: 180px;
+ padding: 10px 14px;
+ border: 1px solid #e0e0e0;
+ border-radius: 6px;
+}
+.osoby span {
+ color: #777777;
+ font-size: 14px;
+}
 footer {
  padding: 20px 0 40px 0;
  color: gray;
@@ -168,7 +196,9 @@ body.ciemny {
 }
 body.ciemny .podtytul,
 body.ciemny #podsumowanie,
-body.ciemny footer {
+body.ciemny footer,
+body.ciemny .osoby span,
+body.ciemny .ladowanie {
  color: #a0a0a0;
 }
 body.ciemny header {
@@ -180,7 +210,8 @@ body.ciemny section {
 body.ciemny nav a {
  color: #7fb3ff;
 }
-body.ciemny #lista-umiejetnosci li {
+body.ciemny #lista-umiejetnosci li,
+body.ciemny .osoby li {
  background-color: #262b33;
  border-color: #3a4150;
 }
@@ -199,4 +230,22 @@ body.ciemny textarea {
  background-color: #262b33;
  border-color: #3a4150;
  color: #e8e8e8;
+}
+@media (max-width: 600px) {
+ body {
+  padding: 0 14px;
+ }
+ nav {
+  gap: 12px;
+ }
+ #przelacznik-motywu {
+  width: 100%;
+  margin-left: 0;
+ }
+ #filtry button {
+  flex-grow: 1;
+ }
+ .osoby li {
+  min-width: 100%;
+ }
 }
