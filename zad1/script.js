@@ -58,3 +58,13 @@ formularz.addEventListener("submit", function (event) {
  });
  formularz.reset();
 });
+
+const przycisk = document.querySelector("#przelacznik-motywu");
+przycisk.addEventListener("click", function () {
+ const jestCiemny = document.body.classList.toggle("ciemny");
+ if (jestCiemny) {
+ przycisk.textContent = "Jasny motyw";
+ } else {
+ przycisk.textContent = "Ciemny motyw";
+ }
+});

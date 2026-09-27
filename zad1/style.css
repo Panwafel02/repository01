@@ -42,6 +42,10 @@ nav a {
 nav a:hover {
  border-bottom-color: #0b5ed7;
 }
+#przelacznik-motywu {
+ margin-left: auto;
+}
+
 section {
  padding: 28px 0;
  border-bottom: 1px solid #eeeeee;
@@ -116,4 +120,34 @@ button {
 }
 button:hover {
  background-color: #0a4fb4;
+}
+
+body.ciemny {
+ background-color: #1c1f24;
+ color: #e8e8e8;
+}
+
+body.ciemny .podtytul,
+body.ciemny footer {
+ color: #a0a0a0;
+}
+body.ciemny header {
+ border-bottom-color: #3a3f47;
+}
+body.ciemny section {
+ border-bottom-color: #2b2f36;
+}
+body.ciemny nav a {
+ color: #7fb3ff;
+}
+body.ciemny #lista-umiejetnosci li {
+ background-color: #262b33;
+ border-color: #3a4150;
+}
+body.ciemny input,
+body.ciemny select,
+body.ciemny textarea {
+ background-color: #262b33;
+ border-color: #3a4150;
+ color: #e8e8e8;
 }
