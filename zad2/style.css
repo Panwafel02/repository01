@@ -45,7 +45,6 @@ nav a:hover {
 #przelacznik-motywu {
  margin-left: auto;
 }
-
 section {
  padding: 28px 0;
  border-bottom: 1px solid #eeeeee;
@@ -54,7 +53,31 @@ h2 {
  margin-top: 0;
  font-size: 24px;
 }
-
+#filtry {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ margin-bottom: 14px;
+}
+#filtry button {
+ background-color: #ffffff;
+ color: #0b5ed7;
+ padding: 5px 12px;
+ font-size: 14px;
+ align-self: auto;
+}
+#filtry button:hover {
+ background-color: #eef3fb;
+}
+#filtry button.aktywny {
+ background-color: #0b5ed7;
+ color: #ffffff;
+}
+#podsumowanie {
+ margin: 0 0 12px 0;
+ color: #555555;
+ font-size: 14px;
+}
 #lista-umiejetnosci {
  display: flex;
  flex-wrap: wrap;
@@ -62,14 +85,49 @@ h2 {
  list-style: none;
  padding: 0;
 }
-
 #lista-umiejetnosci li {
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+ align-items: flex-start;
  background-color: #eef3fb;
  border: 1px solid #cfdcf1;
  border-radius: 14px;
  padding: 6px 14px;
 }
-
+#lista-umiejetnosci .poziom {
+ font-size: 12px;
+ letter-spacing: 2px;
+ color: #0b5ed7;
+}
+.ladowanie {
+ color: #777777;
+ font-style: italic;
+}
+#inspiracje .blad {
+ color: #b02a2a;
+ font-weight: bold;
+}
+.osoby {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 12px;
+ list-style: none;
+ padding: 0;
+}
+.osoby li {
+ display: flex;
+ flex: 1 1 180px;
+ flex-direction: column;
+ min-width: 180px;
+ padding: 10px 14px;
+ border: 1px solid #e0e0e0;
+ border-radius: 6px;
+}
+.osoby span {
+ color: #777777;
+ font-size: 14px;
+}
 footer {
  padding: 20px 0 40px 0;
  color: gray;
@@ -121,14 +179,26 @@ button {
 button:hover {
  background-color: #0a4fb4;
 }
-
+#komunikat {
+ min-height: 26px;
+ margin-top: 14px;
+ font-weight: bold;
+}
+#komunikat.blad {
+ color: #b02a2a;
+}
+#komunikat.sukces {
+ color: #198754;
+}
 body.ciemny {
  background-color: #1c1f24;
  color: #e8e8e8;
 }
-
 body.ciemny .podtytul,
-body.ciemny footer {
+body.ciemny #podsumowanie,
+body.ciemny footer,
+body.ciemny .osoby span,
+body.ciemny .ladowanie {
  color: #a0a0a0;
 }
 body.ciemny header {
@@ -140,9 +210,19 @@ body.ciemny section {
 body.ciemny nav a {
  color: #7fb3ff;
 }
-body.ciemny #lista-umiejetnosci li {
+body.ciemny #lista-umiejetnosci li,
+body.ciemny .osoby li {
  background-color: #262b33;
  border-color: #3a4150;
+}
+body.ciemny #filtry button {
+ background-color: #262b33;
+ color: #7fb3ff;
+ border-color: #4b72a8;
+}
+body.ciemny #filtry button.aktywny {
+ background-color: #0b5ed7;
+ color: #ffffff;
 }
 body.ciemny input,
 body.ciemny select,
@@ -150,4 +230,22 @@ body.ciemny textarea {
  background-color: #262b33;
  border-color: #3a4150;
  color: #e8e8e8;
+}
+@media (max-width: 600px) {
+ body {
+  padding: 0 14px;
+ }
+ nav {
+  gap: 12px;
+ }
+ #przelacznik-motywu {
+  width: 100%;
+  margin-left: 0;
+ }
+ #filtry button {
+  flex-grow: 1;
+ }
+ .osoby li {
+  min-width: 100%;
+ }
 }
