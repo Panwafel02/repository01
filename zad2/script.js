@@ -20,9 +20,50 @@ const budujListe = (lista) =>
         `)
         .join("");
 
-const listaEl = document.querySelector("#lista-umiejetnosci");
+const filtrujPoKategorii = (lista, kategoria) =>
+    kategoria === "wszystkie"
+        ? [...lista]
+        : lista.filter(u => u.kategoria === kategoria);
 
-listaEl.innerHTML = budujListe(umiejetnosci);
+const sredniPoziom = (lista) => {
+   if (lista.length === 0) {
+      return 0;
+   }
+
+   const suma = lista.reduce((razem, { poziom }) => razem + poziom, 0);
+   return Math.round((suma / lista.length) * 10) / 10;
+};
+
+const podsumowanie = (lista) =>
+    lista.length === 0
+        ? "Brak umiejętności w tej kategorii."
+        : `Umiejętności: ${lista.length} · średni poziom: ${sredniPoziom(lista)}`;
+
+const listaEl = document.querySelector("#lista-umiejetnosci");
+const podsumowanieEl = document.querySelector("#podsumowanie");
+const filtryEl = document.querySelector("#filtry");
+
+const pokazUmiejetnosci = (kategoria = "wszystkie") => {
+   const wybrane = filtrujPoKategorii(umiejetnosci, kategoria);
+
+   listaEl.innerHTML = budujListe(wybrane);
+   podsumowanieEl.textContent = podsumowanie(wybrane);
+};
+
+filtryEl.addEventListener("click", (event) => {
+   const przycisk = event.target.closest("button");
+
+   if (!przycisk) {
+      return;
+   }
+
+   filtryEl.querySelectorAll("button").forEach(b => b.classList.remove("aktywny"));
+   przycisk.classList.add("aktywny");
+
+   pokazUmiejetnosci(przycisk.dataset.kategoria);
+});
+
+pokazUmiejetnosci();
 
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");

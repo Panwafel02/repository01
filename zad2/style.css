@@ -151,3 +151,46 @@ body.ciemny textarea {
  border-color: #3a4150;
  color: #e8e8e8;
 }
+
+#lista-umiejetnosci li {
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+ align-items: flex-start;
+}
+
+#lista-umiejetnosci .poziom {
+ font-size: 12px;
+ letter-spacing: 2px;
+ color: #0b5ed7;
+}
+
+#filtry {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ margin-bottom: 14px;
+}
+
+#filtry button {
+ background-color: #ffffff;
+ color: #0b5ed7;
+ padding: 5px 12px;
+ font-size: 14px;
+ align-self: auto;
+}
+
+#filtry button:hover {
+ background-color: #eef3fb;
+}
+
+#filtry button.aktywny {
+ background-color: #0b5ed7;
+ color: #ffffff;
+}
+
+#podsumowanie {
+ margin: 0 0 12px 0;
+ color: #555555;
+ font-size: 14px;
+}
