@@ -10,15 +10,19 @@ const umiejetnosci = [
    { nazwa: "Python", poziom: 3, kategoria: "backend" }
 ];
 
-const pokazUmiejetnosci = (lista) => {
-   const kontener = document.querySelector("#lista-umiejetnosci");
-   for (const nazwa of lista) {
-      const element = document.createElement("li");
-      element.textContent = nazwa;
-      kontener.appendChild(element);
-   }
-};
-pokazUmiejetnosci(umiejetnosci);
+const budujListe = (lista) =>
+    lista
+        .map(({ nazwa, poziom }) => `
+            <li>
+                <span class="nazwa">${nazwa}</span>
+                <span class="poziom" title="Poziom ${poziom} z 5">${"●".repeat(poziom)}${"○".repeat(5 - poziom)}</span>
+            </li>
+        `)
+        .join("");
+
+const listaEl = document.querySelector("#lista-umiejetnosci");
+
+listaEl.innerHTML = budujListe(umiejetnosci);
 
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");
