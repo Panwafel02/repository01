@@ -5,6 +5,12 @@ const listaEl = document.querySelector("#lista-umiejetnosci");
 const podsumowanieEl = document.querySelector("#podsumowanie");
 const filtryEl = document.querySelector("#filtry");
 
+/**
+ * Wyświetla przefiltrowaną listę umiejętności i podsumowanie.
+ *
+ * @param {string} kategoria - nazwa kategorii lub "wszystkie"
+ * @returns {void}
+ */
 const pokazUmiejetnosci = (kategoria = "wszystkie") => {
    const wybrane = filtrujPoKategorii(umiejetnosci, kategoria);
 
@@ -30,6 +36,13 @@ pokazUmiejetnosci();
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");
 
+/**
+ * Wyświetla komunikat dla użytkownika.
+ *
+ * @param {string} tresc - tekst komunikatu
+ * @param {string} rodzaj - klasa CSS ("blad" lub "sukces")
+ * @returns {void}
+ */
 const pokazKomunikat = (tresc, rodzaj) => {
    komunikat.textContent = tresc;
    komunikat.classList.remove("blad", "sukces");
@@ -74,6 +87,13 @@ przycisk.addEventListener("click", () => {
 
 const inspiracjeEl = document.querySelector("#inspiracje");
 
+/**
+ * Pobiera listę użytkowników z publicznego API.
+ *
+ * @param {string} adres - pełny adres zasobu
+ * @returns {Promise<Array<Object>>} tablica użytkowników
+ * @throws {Error} gdy serwer odpowie statusem innym niż 2xx
+ */
 const pobierzUzytkownikow = async (adres) => {
    const odpowiedz = await fetch(adres);
 
@@ -84,6 +104,11 @@ const pobierzUzytkownikow = async (adres) => {
    return odpowiedz.json();
 };
 
+/**
+ * Pobiera i wyświetla sekcję Inspiracje z API.
+ *
+ * @returns {Promise<void>}
+ */
 const pokazInspiracje = async () => {
    inspiracjeEl.innerHTML = `<p class="ladowanie">Ładowanie…</p>`;
 
