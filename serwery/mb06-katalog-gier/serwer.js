@@ -1,9 +1,10 @@
 import express from "express";
+import { gry } from "./dane.js";
 
 const app = express();
 
 app.get("/gry", (req, res) => {
-    res.send("Katalog gier planszowych - tryb dev");
+    res.json(gry);
 });
 
 app.listen(3000, () => {
