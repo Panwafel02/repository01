@@ -19,6 +19,18 @@ app.get("/gry", (req, res) => {
     res.json(gry);
 });
 
+app.get("/gry/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const gra = gry.find((pozycja) => pozycja.id === id);
+
+    if (!gra) {
+        res.status(404).json({ blad: "Nie ma gry o takim numerze." });
+        return;
+    }
+
+    res.json(gra);
+});
+
 app.listen(3000, () => {
     console.log("Serwer działa: http://localhost:3000");
 });
