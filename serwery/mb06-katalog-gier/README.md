@@ -35,4 +35,4 @@ W trybie developerskim użyj `npm run dev`; serwer uruchomi się ponownie po zmi
 
 ## Autor
 
-Panwafel0, klasa: [do uzupełnienia]
+Aleksander Nowaczyk, klasa: 4P1T
