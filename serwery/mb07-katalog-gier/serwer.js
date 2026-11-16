@@ -64,6 +64,19 @@ app.get("/statystyki", (req, res) => {
         najdrozsza: najdrozsza.nazwa
     });
 });
+
+/** Nieznany adres: JSON dla tras z danymi, strona HTML dla reszty. */
+app.use((req, res) => {
+    const czyDane = ["/gry", "/szukaj", "/statystyki"].some((p) =>
+        req.url.startsWith(p)
+    );
+    if (czyDane) {
+        res.status(404).json({ blad: "Nie ma takiej trasy" });
+        return;
+    }
+    res.status(404).send("404 — nie ma takiej strony\n");
+});
+
 /** POST /echo — odsyła otrzymane dane. */
 app.post("/echo", (req, res) => {
     console.log(req.body);
