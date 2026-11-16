@@ -21,24 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
+import routerGier from "./trasy/gry.js";
 
-// GET /gry — pełna lista gier w formacie JSON.
-app.get("/gry", (req, res) => {
-    res.json(gry);
-});
-
-// GET /gry/:id — jedna gra po ID; zwraca 404, gdy jej nie ma.
-app.get("/gry/:id", (req, res) => {
-    const id = Number(req.params.id);
-    const gra = gry.find((pozycja) => pozycja.id === id);
-
-    if (!gra) {
-        res.status(404).json({ blad: "Nie ma gry o takim numerze." });
-        return;
-    }
-
-    res.json(gra);
-});
+app.use("/gry", routerGier);
 
 // GET /szukaj — filtry query: wydawca, max i gracze; każdy parametr jest opcjonalny.
 app.get("/szukaj", (req, res) => {
