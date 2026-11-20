@@ -61,7 +61,8 @@ app.get("/statystyki", (req, res) => {
     res.json({
         liczbaGier: gry.length,
         sredniaCena,
-        najdrozsza: najdrozsza.nazwa
+        najdrozsza: najdrozsza.nazwa,
+        wygenerowano: req.czasZadania
     });
 });
 
