@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,7 @@
         <nav>
             <a href="#o-mnie">O mnie</a>
             <a href="#umiejetnosci">Umiejętności</a>
+            <a href="#inspiracje-sekcja">Inspiracje</a>
             <a href="#kontakt">Kontakt</a>
             <button type="button" id="przelacznik-motywu">Ciemny motyw</button>
         </nav>
@@ -24,22 +25,33 @@
         <section id="o-mnie">
             <h2>O mnie</h2>
             <p>
-                Programowaniem zajmuję się od pierwszej klasy technikum. Najbardziej interesuje mnie język c#.
+                Programowaniem zajmuję się od pierwszej klasy technikum. Najbardziej interesuje mnie język C#.
             </p>
             <p>
-                W wolnym czasie gram w pilkę nożną oraz oglądam filmy.
+                W wolnym czasie gram w piłkę nożną oraz oglądam filmy.
             </p>
         </section>
         <section id="umiejetnosci">
             <h2>Umiejętności</h2>
-            <p>
-                Lista poniżej jest generowana przez js z tablicy:
-            </p>
+            <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
+            <div id="filtry">
+                <button type="button" class="aktywny" data-kategoria="wszystkie">Wszystkie</button>
+                <button type="button" data-kategoria="frontend">Frontend</button>
+                <button type="button" data-kategoria="backend">Backend</button>
+                <button type="button" data-kategoria="narzedzia">Narzędzia</button>
+                <button type="button" data-kategoria="miekkie">Miękkie</button>
+            </div>
+            <p id="podsumowanie"></p>
             <ul id="lista-umiejetnosci"></ul>
+        </section>
+        <section id="inspiracje-sekcja">
+            <h2>Inspiracje</h2>
+            <p>Osoby pobrane z publicznego API w chwili otwarcia strony:</p>
+            <div id="inspiracje"></div>
         </section>
         <section id="kontakt">
             <h2>Kontakt</h2>
-            <p>Napisz do mnie - formularz sprawdza dane i wyswietla potwierdzenie</p>
+            <p>Napisz do mnie - formularz sprawdza dane i wyświetla potwierdzenie.</p>
             <form id="formularz-kontakt">
                 <div class="pole">
                     <label for="imie">Imię</label>
@@ -60,14 +72,13 @@
                 </div>
                 <div class="pole">
                     <label for="tresc">Wiadomość</label>
-                    <textarea id="tresc" name="tresc" rows="4" placeholder="Treść wiadomości"></textarea> 
+                    <textarea id="tresc" name="tresc" rows="4" placeholder="Treść wiadomości"></textarea>
                 </div>
                 <button type="submit">Wyślij</button>
             </form>
             <div id="komunikat"></div>
         </section>
     </main>
-    <script src="script.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
