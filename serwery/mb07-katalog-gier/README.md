@@ -1,6 +1,6 @@
-# Serwer katalogu gier planszowych
+# Katalog gier planszowych MB7
 
-Serwer Express udostępnia katalog gier planszowych, wyszukiwanie i statystyki. Dane katalogu są zapisane w pliku `dane.js`.
+Serwer Express udostępnia katalog gier, filtrowanie, statystyki i stronę powitalną.
 
 ## Uruchomienie
 
@@ -11,27 +11,45 @@ npm install
 npm start
 ```
 
-W trybie developerskim użyj `npm run dev`; serwer uruchomi się ponownie po zmianie plików.
+W trybie developerskim uruchom `npm run dev`.
 
 ## Struktura projektu
 
-| Plik | Opis |
+| Plik lub katalog | Opis |
 |---|---|
-| `package.json` | konfiguracja projektu i skrypty npm |
-| `package-lock.json` | dokładne wersje zależności |
-| `.gitignore` | wyklucza katalog `node_modules` |
-| `serwer.js` | trasy Express i uruchomienie serwera |
-| `dane.js` | katalog gier planszowych |
+| `package.json` | nazwa projektu, zależności i skrypty npm |
+| `.gitignore` | wyklucza `node_modules` |
+| `serwer.js` | middleware, trasy i uruchomienie serwera |
+| `dane.js` | katalog gier |
+| `trasy/gry.js` | router `/gry` i `/gry/:id` |
+| `public/index.html` | strona powitalna |
+| `public/styl.css` | wygląd strony powitalnej |
+| `zapytania.http` | przykładowe żądania POST `/echo` |
 
 ## Trasy
 
-| Metoda | Adres | Parametry | Działanie |
-|---|---|---|---|
-| GET | `/` | — | zwraca stronę powitalną z linkami |
-| GET | `/gry` | — | zwraca pełny katalog w JSON |
-| GET | `/gry/:id` | `id` w ścieżce | zwraca grę o podanym ID albo błąd 404 |
-| GET | `/szukaj` | `wydawca`, `max`, `gracze` | filtruje gry; każdy parametr jest opcjonalny |
-| GET | `/statystyki` | — | zwraca liczbę gier, średnią cenę i nazwę najdroższej gry |
+| Metoda | Adres | Działanie |
+|---|---|---|
+| GET | `/` | strona powitalna z plików statycznych |
+| GET | `/gry` | pełny katalog w JSON |
+| GET | `/gry/:id` | gra o podanym ID albo JSON 404 |
+| GET | `/szukaj?wydawca=&max=&gracze=` | filtrowanie katalogu; parametry są opcjonalne |
+| GET | `/statystyki` | liczba gier, średnia cena, najdroższa gra i czas wygenerowania |
+| POST | `/echo` | zwraca treść żądania w JSON |
+| GET | `/blad` | zgłasza testowy błąd serwera |
+
+## Middleware
+
+| Middleware | Działanie |
+|---|---|
+| `logger` | loguje żądania i dodaje `req.czasZadania` |
+| `express.json` | odczytuje treść żądania JSON |
+| `express.urlencoded` | odczytuje treść formularza |
+| `express.static` | wysyła pliki z katalogu `public` |
+
+## Obsługa błędów
+
+Nieznana strona zwraca status 404 i tekst HTML. Nieznana trasa z danymi zwraca status 404 i JSON. Błąd w trasie, na przykład `/blad`, zwraca status 500 i `{"blad":"Błąd serwera"}`; szczegóły są logowane w terminalu.
 
 ## Autor
 

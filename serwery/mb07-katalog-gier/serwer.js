@@ -61,8 +61,20 @@ app.get("/statystyki", (req, res) => {
     res.json({
         liczbaGier: gry.length,
         sredniaCena,
-        najdrozsza: najdrozsza.nazwa
+        najdrozsza: najdrozsza.nazwa,
+        wygenerowano: req.czasZadania
     });
+});
+
+/** GET /blad — celowo zgłasza błąd; służy do sprawdzania obsługi błędów. */
+app.get("/blad", () => {
+    throw new Error("Testowy błąd");
+});
+
+/** POST /echo — odsyła otrzymane dane. */
+app.post("/echo", (req, res) => {
+    console.log(req.body);
+    res.json({ odebrano: req.body });
 });
 
 /** Nieznany adres: JSON dla tras z danymi, strona HTML dla reszty. */
@@ -77,11 +89,12 @@ app.use((req, res) => {
     res.status(404).send("404 — nie ma takiej strony\n");
 });
 
-/** POST /echo — odsyła otrzymane dane. */
-app.post("/echo", (req, res) => {
-    console.log(req.body);
-    res.json({ odebrano: req.body });
+/** Błąd w trasie: szczegóły do terminala, krótki komunikat do użytkownika. */
+app.use((err, req, res, next) => {
+    console.error("Błąd:", err.message);
+    res.status(500).json({ blad: "Błąd serwera" });
 });
+
 app.listen(3000, () => {
     console.log("Serwer działa: http://localhost:3000");
 });
