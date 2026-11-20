@@ -73,6 +73,13 @@ pokazInspiracje();
 const formularz = document.querySelector("#formularz-kontakt");
 const komunikat = document.querySelector("#komunikat");
 
+/**
+ * Wyświetla komunikat dla użytkownika.
+ *
+ * @param {string} tresc - tekst komunikatu
+ * @param {string} rodzaj - klasa CSS ("blad" lub "sukces")
+ * @returns {void}
+ */
 const pokazKomunikat = (tresc, rodzaj) => {
     komunikat.textContent = tresc;
     komunikat.classList.remove("blad", "sukces");

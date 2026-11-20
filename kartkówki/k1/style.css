@@ -1,0 +1,16 @@
+#lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+li {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.wyrozniony {
+    font-weight: bold;
+    background-color: lightgreen;
+}
